@@ -37,9 +37,16 @@ int main(int argc, const char * argv[])
     int numLinea=1;
     float l,r,t;
     float elapsedTime=0.0;
-    ifstream infile ("/Users/diego/Desktop/in.m");
-    ofstream outFile ("/Users/diego/Desktop/out.m");
-        
+    
+    if(argc!=2)
+    {
+        cerr << "Error, ejecutar con \"./translate <archivo de entrada>\"" << endl;
+        return 2;
+    }
+    
+    ifstream infile (argv[1]);
+    ofstream outFile ("motores.m");
+    
     if (infile.is_open() && outFile.is_open())
     {
         outFile << "function [dphi1, dphi2] = motores(t,ZZ,r,l)\n\ndphi1 = 0;\ndphi2 = 0;\n\n";
